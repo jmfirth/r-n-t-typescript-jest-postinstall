@@ -18,16 +18,23 @@ pkg.scripts['postmerge'] = 'yarn install';
 pkg.scripts['precommit'] = 'npm run validate';
 
 pkg.jest = {
+  "globals": {
+    "ts-jest": {
+      "tsConfigFile": "tsconfig-jest.json"
+    }
+  },
   "preset": "react-native",
   "transform": {
-    "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-    ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest",
+    "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
-  "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
   "moduleFileExtensions": [
     "ts",
     "tsx",
-    "js"
+    "js",
+    "jsx",
+    "json"
   ]
 };
 
